@@ -3,10 +3,21 @@
 namespace App\Repositories;
 use App\Models\Comments;
 
-class CommentsRepository extends Repository
+class CommentsRepository 
 {
-    public function __construct(Comments $model){
-        $this->model = $model;
+    public function __construct(Comments $comments){
+        
+        $this->comments = $comments;
     }
 
+    public function createComment($insertArray){
+        return $this->comments->create($insertArray);
+    }
+
+    public function getBlogComments($id)
+
+    {
+       
+        return $this->comments->where('blog_id', $id)->orderBy('id','DESC')->paginate(3);
+    }
 }

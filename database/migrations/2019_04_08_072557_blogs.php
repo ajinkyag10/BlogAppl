@@ -6,7 +6,9 @@ use Illuminate\Database\Migrations\Migration;
 class Blogs extends Migration
 {
 public function up()
+
 {
+    
 Schema::create('blogs', function (Blueprint $table) {
 $table->bigIncrements('id');
 $table->string('title');
