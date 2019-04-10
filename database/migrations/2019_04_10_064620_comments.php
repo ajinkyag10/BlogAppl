@@ -11,9 +11,11 @@ public function up()
 {
 Schema::create('comments', function (Blueprint $table) {
 $table->bigIncrements('id');
-$table->integer('blog_id');
+$table->unsignedInteger('blog_id');
+// $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
+
 $table->string('name');
-$table->string('email');
+$table->string('email')->unique();
 $table->string('comment');
 $table->timestamps();
 });

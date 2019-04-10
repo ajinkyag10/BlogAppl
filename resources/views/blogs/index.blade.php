@@ -4,7 +4,7 @@
    <h2 style="text-align:center">Blogs List</h2>
 </div>
 <div class="float-right">
-   <div class="row">
+   
       <div class="col">
          <a  class="btn btn-primary col-md-12" href="/blogs/create">New</a>
       </div>

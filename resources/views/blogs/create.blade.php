@@ -5,13 +5,13 @@
 <div class="field">
    <label for="title" class="label">Title</label>
    <div class="control">
-      <input type="text" class="input  {{ $errors->has('title') ? 'is-danger':''}}" placeholder="Enter Title" name="title" >
+      <input type="text" class="input  {{ $errors->has('title') ? 'is-danger':''}}" placeholder="Enter Title" name="title" value="{{ old('title') }}">
    </div>
 </div>
 <div class="field">
    <label for="description" class="label">Description</label>
    <div class="control">
-      <textarea name="description" class="input {{ $errors->has('description') ? 'is-danger':''}}" placeholder="Enter Description"></textarea>
+      <textarea name="description" class="input {{ $errors->has('description') ? 'is-danger':''}}" placeholder="Enter Description">{{ old('title') }}</textarea>
    </div>
 </div>
 <div class="control">

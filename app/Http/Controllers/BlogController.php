@@ -14,7 +14,7 @@ class BlogController extends Controller
     public function __construct(BlogService $blogService,CommentsService $commentsService){
         $this->blogService = $blogService;
        $this->commentsService = $commentsService;
-        //  $this->middleware('auth');
+    //    $this->middleware('auth');
 
     }
 
@@ -46,7 +46,7 @@ class BlogController extends Controller
         }
     }
     public function details($id){
-        dd($id);
+        
         $blogdetails=$this->blogService->getBlogDetails($id);
         
         $comments = $this->commentsService->getBlogComments($id);

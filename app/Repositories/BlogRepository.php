@@ -15,7 +15,7 @@ class BlogRepository
 
     public function list(){
 
-        return $this->blog->orderBy('created_at','DESC')->get();
+        return $this->blog->orderBy('created_at','DESC')->paginate(4);
     }
 
     public function createBlog($inputsArray){

@@ -16,14 +16,16 @@ class CommentsController extends Controller
 
 
 
-    public function store(Request $request){
-        request()->validate([
+    public function store(Request $request,$id){
+   
+         request()->validate([
             
-            'name'=>['required'],
-            'email'=>['required'],
-            'comment'=>['required','min:5','max:50']
-        ]);
-        $result = $this->commentsService->createComment($request);
+             'name'=>['required','min:3'],
+             'email'=>['required'],
+             'comment'=>['required','min:5','max:50']
+            ]);
+         
+        $result = $this->commentsService->createComment($request,$id);
             if ($result) {
                return back();
             } else {

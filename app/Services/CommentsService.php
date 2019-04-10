@@ -14,16 +14,18 @@ class CommentsService
     
     }
     
-    public function createComment($request){
+    public function createComment($request,$id){
+     
         $input = $request->all();  
        
         $insertArray = [
-            'blog_id'=>$input['blog_id'],
+            'blog_id'=>$id,
             'name' =>  $input['name'],
             'email' =>  $input['email'], 
             'comment' =>  $input['comment'],
         ];
-
+        
+    
         return $this->commentsRepository->createComment($insertArray);
     } 
     

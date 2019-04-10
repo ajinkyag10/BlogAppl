@@ -5,12 +5,14 @@ use App\Models\Comments;
 
 class CommentsRepository 
 {
-    public function __construct(Comments $comments){
+        private $comments;
+        public function __construct(Comments $comments){
         
         $this->comments = $comments;
     }
 
     public function createComment($insertArray){
+      
         return $this->comments->create($insertArray);
     }
 
@@ -18,6 +20,6 @@ class CommentsRepository
 
     {
        
-        return $this->comments->where('blog_id', $id)->orderBy('id','DESC')->paginate(3);
+        return $this->comments->where('blog_id', $id)->orderBy('id','DESC')->get();
     }
 }
