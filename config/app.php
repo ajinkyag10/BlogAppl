@@ -32,10 +32,10 @@ return [
     |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------
-    |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
+    |Laravel\Passport\PassportServiceProvider::class,
+    |Laravel\Passport\PassportServiceProvider::class,error messages with
+    |Laravel\Passport\PassportServiceProvider::class,curs within your
+    |Laravel\Passport\PassportServiceProvider::class,page is shown.
     |
     */
 
@@ -60,22 +60,22 @@ return [
     |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
-    |
-    | Here you may specify the default timezone for your application, which
-    | will be used by the PHP date and date-time functions. We have gone
-    | ahead and set this to a sensible default for you out of the box.
+    |Laravel\Passport\PassportServiceProvider::class,
+    |Laravel\Passport\PassportServiceProvider::class,our application, which
+    |Laravel\Passport\PassportServiceProvider::class,tions. We have gone
+    |Laravel\Passport\PassportServiceProvider::class,u out of the box.
     |
     */
 
     'timezone' => 'UTC',
 
     /*
-    |--------------------------------------------------------------------------
-    | Application Locale Configuration
-    |--------------------------------------------------------------------------
-    |
-    | The application locale determines the default locale that will be used
-    | by the translation service provider. You are free to set this value
+    |-----------------------------------------------Laravel\Passport\PassportServiceProvider::class,---------------------------
+    | Application Locale ConfigurationLaravel\Passport\PassportServiceProvider::class,
+    |-----------------------------------------------Laravel\Passport\PassportServiceProvider::class,---------------------------
+    |Laravel\Passport\PassportServiceProvider::class,
+    | The application locale determines the default Laravel\Passport\PassportServiceProvider::class,locale that will be used
+    | by the translation service provider. You are fLaravel\Passport\PassportServiceProvider::class,ree to set this value
     | to any of the locales which will be supported by the application.
     |
     */
@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Laravel\Passport\PassportServiceProvider::class,
         /*
          * Package Service Providers...
          */
