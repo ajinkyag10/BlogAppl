@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\API;
+use App\OauthAccessToken;
 use App\Services\CommentsService;
 use App\Services\BlogService;
 use Illuminate\Http\Request; 
@@ -14,6 +15,7 @@ public $successStatus = 200;
 private $blogService;
 private $commentsService;
 private $blog;
+
 public function __construct(BlogService $blogService,CommentsService $commentsService,Blog $blog){
 $this->blogService = $blogService;
 $this->commentsService = $commentsService;
@@ -30,16 +32,12 @@ return response()->json(['error'=>'Unauthorised'], 401);
 } 
 }
 public function logout(Request $request)
-{
-$user = Auth::guard('api')->user();
-
-if ($user) {
-//$user->api_token = null;
-$user->save();
-}
-
-return response()->json(['data' => 'User logged out.'], 200);
-}
+    {
+        $request->user()->token()->revoke();
+        return response()->json([
+            'message' => 'Successfully logged out',
+        ]);
+    }
 public function register(Request $request) 
 { 
 $validator = Validator::make($request->all(), [ 
