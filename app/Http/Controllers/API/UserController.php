@@ -7,14 +7,17 @@ use App\Http\Controllers\Controller;
 use App\User; 
 use Illuminate\Support\Facades\Auth; 
 use Validator;
+use App\Models\Blog;
 class UserController extends Controller 
 {
 public $successStatus = 200;
 private $blogService;
 private $commentsService;
-public function __construct(BlogService $blogService,CommentsService $commentsService){
+private $blog;
+public function __construct(BlogService $blogService,CommentsService $commentsService,Blog $blog){
 $this->blogService = $blogService;
 $this->commentsService = $commentsService;
+$this->blog = $blog;
 }
 public function login(){ 
 if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
@@ -26,11 +29,17 @@ else{
 return response()->json(['error'=>'Unauthorised'], 401); 
 } 
 }
-/** 
-* Register api 
-* 
-* @return \Illuminate\Http\Response 
-*/ 
+public function logout(Request $request)
+{
+$user = Auth::guard('api')->user();
+
+if ($user) {
+//$user->api_token = null;
+$user->save();
+}
+
+return response()->json(['data' => 'User logged out.'], 200);
+}
 public function register(Request $request) 
 { 
 $validator = Validator::make($request->all(), [ 
@@ -91,5 +100,20 @@ $blogdetails=$this->blogService->getBlogDetails($id);
 $comments = $this->commentsService->getBlogComments($id);
 return response()->json(['success' => $blogdetails,$comments]);
 }
+public function edit(Blog $blog)
+{ 
+    return response()->json(['success' => $blog]);
 }
+public function update(Blog $blog){
 
+     $blog=$this->blogService->getBlogsDetails($blog);
+  
+    return esponse()->json(['success' => $blog]);
+}
+public function destroy(Blog $blog)
+{
+    $blog=$this->blogService->deleteBlog($blog);
+
+return response()->json(['success' => $blog]);
+}
+}

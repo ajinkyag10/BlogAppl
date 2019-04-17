@@ -4,14 +4,18 @@ use App\Services\BlogService;
 use App\Services\CommentsService;
 use Illuminate\Http\Request;
 use App\Repositories\BlogRepository;
+use App\Models\Blog;
 class BlogController extends Controller
 {
 private $blogService;
 private $commentsService;
-public function __construct(BlogService $blogService,CommentsService $commentsService){
+private $blog;
+
+public function __construct(BlogService $blogService,CommentsService $commentsService,Blog $blog){
 $this->blogService = $blogService;
 $this->commentsService = $commentsService;
-//    $this->middleware('auth');
+$this->blog=$blog;
+
 }
 public function home(){
 $blogslist=$this->blogService->index();
@@ -35,5 +39,19 @@ public function details($id){
 $blogdetails=$this->blogService->getBlogDetails($id);
 $comments = $this->commentsService->getBlogComments($id);
 return view('/blogs.show', compact('blogdetails','comments')); 
+}
+public function edit(Blog $blog)
+{ 
+return view('blogs.edit',compact('blog'));
+}
+public function update(Blog $blog)
+{
+$blog->update(request(['title','description']));
+return redirect('/blogs');
+}
+public function destroy(Blog $blog)
+{
+$blog->delete();
+return redirect('/blogs');
 }
 }

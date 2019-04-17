@@ -25,4 +25,15 @@ class BlogRepository
     public function getBlog($id){
         return $this->blog->find($id);
     }
+    public function getBlogs($blog){
+        
+        $blog->update(request(['title','description']));
+        return $this->blog->find($blog->id);
+    }
+
+    public function destroyBlog($blog){
+        $blog=Blog::findOrFail($blog->id);
+        $blog->delete();
+        return $this->blog->delete();
+    }
 }

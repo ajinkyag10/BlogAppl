@@ -14,6 +14,8 @@ Route::get('/blogs/create','BlogController@addBlog')->middleware('auth');
 Route::post('/blogs','BlogController@store');
 Route::get('/blogs/{blog}','BlogController@details');
 Route::post('/blogs/{blog}','CommentsController@store');
-
+Route::get('/blogs/{blog}/edit', 'BlogController@edit');
+Route::patch('/blogs/{blog}', 'BlogController@update');
+Route::delete('/blogs/{blog}', 'BlogController@destroy')->middleware('auth');
 
 
